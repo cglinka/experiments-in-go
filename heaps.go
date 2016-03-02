@@ -48,10 +48,8 @@ func main() {
 	// a = heap.Pop(h).(int)
 	// fmt.Println(a)
 
-	length := h.Len()
-	fmt.Println(length)
 	newThing := 5
-	for i := 0; i < length; i++ {
+	for h.Len() > 0 {
 		a := heap.Pop(h).(int)
 		fmt.Println("what is a?", a)
 		if a >= newThing {
@@ -61,4 +59,10 @@ func main() {
 		fmt.Println(h)
 	}
 	fmt.Println("final heap:", h)
+
+	// Alt that isn't super readable
+	for a := heap.Pop(h).(int); a < 5; a = heap.Pop(h).(int) {
+		fmt.Println(a)
+	}
+
 }
