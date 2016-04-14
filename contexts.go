@@ -35,7 +35,7 @@ func main() {
 		a: "string",
 	}
 
-	ctx = context.WithValue(ctx, "key", val)
+	ctx = context.WithValue(ctx, "key", &val)
 	m.Context = ctx
 
 	m.Get("/", indexHandler)
