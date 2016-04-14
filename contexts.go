@@ -22,11 +22,19 @@ func main() {
 
 	ctx := context.Background()
 	// ctx = context.WithValue(ctx, "key", "val")
-	val := struct {
+	// val := struct {
+	// 	a string
+	// }{
+	// 	"a string",
+	// }
+	type Something struct {
 		a string
-	}{
-		"a string",
 	}
+
+	val := Something{
+		a: "string",
+	}
+
 	ctx = context.WithValue(ctx, "key", val)
 	m.Context = ctx
 
