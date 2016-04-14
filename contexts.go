@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"reflect"
 
 	"github.com/guregu/kami"
 	"golang.org/x/net/context"
@@ -11,14 +12,22 @@ import (
 
 func indexHandler(ctx context.Context, w http.ResponseWriter, r *http.Request) {
 	k := ctx.Value("key")
+	whatis := reflect.TypeOf(k)
 	fmt.Println(k)
+	fmt.Println(whatis)
 }
 
 func main() {
 	m := kami.New()
 
 	ctx := context.Background()
-	ctx = context.WithValue(ctx, "key", "val")
+	// ctx = context.WithValue(ctx, "key", "val")
+	val := struct {
+		a string
+	}{
+		"a string",
+	}
+	ctx = context.WithValue(ctx, "key", val)
 	m.Context = ctx
 
 	m.Get("/", indexHandler)
