@@ -15,6 +15,9 @@ func indexHandler(ctx context.Context, w http.ResponseWriter, r *http.Request) {
 	whatis := reflect.TypeOf(k)
 	fmt.Println(k)
 	fmt.Println(whatis)
+
+	test := k.a
+	fmt.Println(test)
 }
 
 func main() {
