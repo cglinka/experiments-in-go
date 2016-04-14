@@ -11,13 +11,17 @@ import (
 )
 
 func indexHandler(ctx context.Context, w http.ResponseWriter, r *http.Request) {
-	k := ctx.Value("key")
+	k := ctx.Value("key").(*Something)
 	whatis := reflect.TypeOf(k)
 	fmt.Println(k)
 	fmt.Println(whatis)
 
 	test := k.a
 	fmt.Println(test)
+}
+
+type Something struct {
+	a string
 }
 
 func main() {
@@ -30,9 +34,6 @@ func main() {
 	// }{
 	// 	"a string",
 	// }
-	type Something struct {
-		a string
-	}
 
 	val := Something{
 		a: "string",
