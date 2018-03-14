@@ -1,3 +1,4 @@
+//https://stackoverflow.com/questions/13812121/how-to-clear-a-map-in-go
 package main
 
 import (
